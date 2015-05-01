@@ -1,23 +1,19 @@
 dns_resolution Cookbook
 =======================
-TODO: Enter the cookbook description here.
+Chef example cookbook, it performs a basic package dependency check and proceeds to install the Python script resolution.py. This script resolves DNS queries froma given file.
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
-e.g.
+
 #### packages
-- `toaster` - dns_resolution needs toaster to brown your bagel.
+- `python` - dns_resolution needs python >= 2.7
+- `python-argparse` - dns-resolution will check and try to install this package when RHEL/CentOS systems are detected
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
 
-e.g.
 #### dns_resolution::default
 <table>
   <tr>
@@ -37,9 +33,7 @@ e.g.
 Usage
 -----
 #### dns_resolution::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
 Just include `dns_resolution` in your node's `run_list`:
 
 ```json
@@ -53,9 +47,7 @@ Just include `dns_resolution` in your node's `run_list`:
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
@@ -65,4 +57,4 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+Authors: Juan Luis Font
