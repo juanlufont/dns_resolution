@@ -16,7 +16,22 @@ when "redhat","centos"
 end 
 
 cookbook_file "/usr/local/bin/dns_resolution.py" do
-      source "resolution.py"
+    source "dns_resolution.py"
         mode "0755"
+        owner "root"
+        group "root"
 end
 
+cookbook_file "/usr/local/share/query.txt" do
+    source "query.txt"
+        mode "0644"
+        owner "root"
+        group "root"
+end
+
+python "dns_resolution.py" do
+    command "/usr/local/bin/dns_resolution.py"
+    attribute "/usr/local/share/query.txt"
+    cwd "/root/"
+    action :run
+end
