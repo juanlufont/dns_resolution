@@ -9,7 +9,7 @@ Requirements
 
 #### packages
 - `python` - dns_resolution needs python >= 2.7
-- `python-argparse` - dns-resolution will check and try to install this package when RHEL/CentOS systems are detected
+- `python-argparse` -  this package is required for RHEL/CentOS systems
 
 
 Usage

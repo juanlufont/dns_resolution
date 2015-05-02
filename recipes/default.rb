@@ -9,12 +9,6 @@
 #
 # forcing the installation of argparse package
 # for RHEL/CentOS systems
-when "redhat","centos"
-    package "python-argparse" do
-        action :install
-    end 
-end 
-
 cookbook_file "/usr/local/bin/dns_resolution.py" do
     source "dns_resolution.py"
         mode "0755"
