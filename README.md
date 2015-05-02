@@ -11,24 +11,6 @@ Requirements
 - `python` - dns_resolution needs python >= 2.7
 - `python-argparse` - dns-resolution will check and try to install this package when RHEL/CentOS systems are detected
 
-Attributes
-----------
-
-#### dns_resolution::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['dns_resolution']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
 
 Usage
 -----
@@ -44,6 +26,16 @@ Just include `dns_resolution` in your node's `run_list`:
   ]
 }
 ```
+
+dns_resolution.py
+-----------------
+```
+usage: dns_resolution.py [-h] [-t NTHREADS] [-o OUTPUTFILE] fileName
+```
+* -t NTHREADS: number of workers to parallely process the input fileName
+* -o OUTPUTFILE: optional output file, if provided, the script reciredts the standard output to this file
+* fileName: input file containing the DNS queries to be resolved
+
 
 Contributing
 ------------
