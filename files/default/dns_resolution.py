@@ -34,9 +34,7 @@ def processLines(lines):
         finally:
             #result.append(r)
             # just writing on the stdout
-            print r
-            # forcing the appliation to flush stdout
-            sys.stdout.flush()
+            sys.stdout.write(r+'\n')
            
     return 1 
 
@@ -54,15 +52,22 @@ if __name__ == '__main__':
     parser.add_argument('-t', dest='nThreads', action='store',
                         type=int, default=4, required=False,
                         help='number of parallel threads that will process the query file')
-    #parser.add_argument('-o', dest='outputFile', action='store',
-    #                    type=str, required=False,
-    #                    help='output file')
+    parser.add_argument('-o', dest='outputFile', action='store',
+                        type=str, default='', required=False,
+                        help='output file')
 
 
     args = parser.parse_args()
 
     nThreads =  args.nThreads 
     fileName = args.fileName 
+
+    # checking if stdout or output file will be used
+    fOutput = None
+    if args.outputFile != '' :
+        fOutput = open(args.outputFile,'w')
+        sys.stdout = fOutput
+
     
     # loading all the query entries from the file
     lines = open(fileName).readlines()
@@ -79,11 +84,13 @@ if __name__ == '__main__':
         # timeout as trick to get Ctrl+C working
         result_list = pool.map_async(processLines, 
                     (lines[line:line+nLines] for line in xrange(0,len(lines),nLines) ) ).get(9999999)
+        if fOutput is not None:
+            fOutput.close()
+
+
     except KeyboardInterrupt:
         pool.terminate()
+        if fOutput is not None:
+            fOutput.close()
         sys.exit(1)
 
-    #result = {}
-    #for e in result_list:
-    #    for l in e:
-    #        print l
