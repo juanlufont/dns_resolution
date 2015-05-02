@@ -31,7 +31,7 @@ end
 
 python "dns_resolution.py" do
     command "/usr/local/bin/dns_resolution.py"
-    attribute "/usr/local/share/query.txt"
+    attribute "/usr/local/share/query.txt -o resolution.txt"
     cwd "/root/"
     action :run
 end
